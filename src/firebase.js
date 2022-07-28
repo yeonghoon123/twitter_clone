@@ -1,9 +1,7 @@
 import firebase from "firebase/compat/app";
-import "firebase/compat/auth";
+import { getAuth } from "firebase/auth";
 import "firebase/compat/firestore";
 import "firebase/compat/storage";
-
-console.log(process.env.REACT_APP_FIREBASE_API_KEY);
 
 // firebase config 정보
 const firebaseConfig = {
@@ -16,4 +14,6 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-export default firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
+
+export const AuthUser = getAuth();
