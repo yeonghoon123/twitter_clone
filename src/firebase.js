@@ -1,5 +1,5 @@
 import firebase from "firebase/compat/app";
-import { getAuth } from "firebase/auth";
+import "firebase/compat/auth";
 import "firebase/compat/firestore";
 import "firebase/compat/storage";
 
@@ -16,4 +16,5 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-export const AuthUser = getAuth();
+// 사용자 인증 정보
+export const authService = firebase.auth();
