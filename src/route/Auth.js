@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { authService } from '../firebase';
+import { authService, firebaseInstance } from '../firebase';
 
 export default () => {
     const [userEmail, setUserEmail] = useState(''); // 사용자가 입력한 이메일
@@ -41,6 +41,21 @@ export default () => {
 
     // 페이지가 로그인과 회원가입을 구분하는 이벤트
     const toggleSwitch = (event) => setNewAccount(!newAccount)
+
+    // 소셜 로그인
+    const socialLogin = async (event) => {
+        const { target: { name } } = event; // 소셜 로그인 매체 이름
+        let provider; // 소셜 로그인 매체별 provider
+
+        // 소셜 로그인 매체별 provider 발급
+        if (name === 'google') {
+            provider = new firebaseInstance.auth.GoogleAuthProvider();
+        } else if (name === 'github') {
+            provider = new firebaseInstance.auth.GithubAuthProvider();
+        }
+
+        await authService.signInWithPopup(provider); // 로그인 팝업
+    }
     return (
         <div>
             <form onSubmit={onSubmit}>
@@ -49,8 +64,8 @@ export default () => {
                 <input type="submit" value={newAccount ? "Create Account" : "Sign in"} />
                 <div onClick={toggleSwitch}>{newAccount ? "Sign In" : "Create Account"}</div>
             </form>
-            <button>Google</button>
-            <button>Github</button>
+            <button name='google' onClick={socialLogin}>Google</button>
+            <button name='github' onClick={socialLogin}>Github</button>
         </div>
     )
 }

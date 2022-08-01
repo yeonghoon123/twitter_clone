@@ -1,5 +1,6 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
+import "firebase/compat/database"
 import "firebase/compat/firestore";
 import "firebase/compat/storage";
 
@@ -16,5 +17,11 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+// firebase export
+export const firebaseInstance = firebase;
+
 // 사용자 인증 정보
 export const authService = firebase.auth();
+
+// firebase database 사용 함수
+export const dbService = firebase.firestore();
