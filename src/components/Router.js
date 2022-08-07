@@ -10,15 +10,15 @@ import Auth from '../route/Auth';
 import Profile from '../route/Profile';
 import Navigation from "./Navigation";
 
-const AppRouter = ({ loginStatus }) => {
+const AppRouter = ({ loginStatus, userinfoObj }) => {
     return (
         <Router>
             <Switch>
                 {loginStatus ?
                     <>
                         <Navigation />
-                        <Route exact path="/">
-                            <Home />
+                        <Route exact path="/" >
+                            <Home userinfoObj={userinfoObj}/>
                         </Route>
 
                         <Route path="/profile">
