@@ -25,3 +25,6 @@ export const authService = firebase.auth();
 
 // firebase database 사용 함수
 export const dbService = firebase.firestore();
+
+// firebase storatge 사용 함수
+export const storageService = firebase.storage();

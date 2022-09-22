@@ -11,18 +11,15 @@ function App() {
     // 사용자가 로그인 되어있는지 체크
     authService.onAuthStateChanged( (user) => {
       if(user){
-        setLoginStatus(true);
         setUserinfoObj(user);
-      } else {
-        setLoginStatus(false);
-      }
+      } 
 
       setPageLoading(true);
     })
   }, [])
   return (
     <>
-      {pageLoding ? <AppRouter loginStatus={loginStatus} userinfoObj={userinfoObj}/> : "Page Loading..."}
+      {pageLoding ? <AppRouter loginStatus={Boolean(userinfoObj)} userinfoObj={userinfoObj}/> : "Page Loading..."}
       <span>twitter-clone@{new Date().getFullYear()}</span>
     </>
   );
