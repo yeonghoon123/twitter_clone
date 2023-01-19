@@ -47,7 +47,7 @@ const TweetPost = ({ tweetPostObj, isOwner }) => {
                     </form>
                     :
                     <>
-                        {tweetPostObj.uploadImg && <img src={tweetPostObj.uploadImg} alt="tweetImg" width="50px" height="50px" />}
+                        {tweetPostObj.uploadImgUrl && <img src={tweetPostObj.uploadImgUrl} alt="tweetImg" width="50px" height="50px" />}
                         <p>{tweetPostObj.tweet}</p>
                         {isOwner && <>
                             <button onClick={deletePost}>Delete Post</button>

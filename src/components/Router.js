@@ -10,21 +10,20 @@ import Auth from '../route/Auth';
 import Profile from '../route/Profile';
 import Navigation from "./Navigation";
 
-const AppRouter = ({ loginStatus, userinfoObj }) => {
+const AppRouter = ({refreshUserinfo, loginStatus, userinfoObj }) => {
     return (
         <Router>
             <Switch>
                 {loginStatus ?
                     <>
-                        <Navigation />
+                        <Navigation userinfoObj={userinfoObj}/>
                         <Route exact path="/" >
                             <Home userinfoObj={userinfoObj}/>
                         </Route>
 
                         <Route path="/profile">
-                            <Profile />
+                            <Profile userinfoObj={userinfoObj} refreshUserinfo={refreshUserinfo}/>
                         </Route>
-                        <Redirect from="*" to="/" />
                     </>
                     :
                     <>
